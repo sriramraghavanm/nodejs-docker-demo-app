@@ -8,7 +8,7 @@ RUN mkdir -p /home/app
 
 WORKDIR /home/app
 
-# Copy the application code to the container
+# Copy the application code to the container i.e. inside /home/app in the container
 COPY ./app .
 
 # Install the application dependencies
