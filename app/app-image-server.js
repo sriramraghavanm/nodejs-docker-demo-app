@@ -30,7 +30,7 @@ app.get('/profile-picture', function (req, res) {
 let mongoUrlLocal = "mongodb://mongoadmin:secret@localhost:27017";
 
 // use when starting application as docker container
-let mongoUrlDocker = "mongodb://mongoadmin:secret@mongodb:27017";
+let mongoUrlDocker = "mongodb://mongoadmin:secret@mongodb";
 
 // pass these options to mongo client connect request to avoid DeprecationWarning for current Server Discovery and Monitoring engine
 let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 60000 };
