@@ -13,6 +13,8 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - mongodb-data:/data/db
   mongo-express:
     image: mongo-express
     restart: always # mongo express has to wait till mongodb container is up and running
@@ -22,3 +24,6 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
       - ME_CONFIG_MONGODB_ADMINUSERNAME=mongoadmin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=secret
+volumes:
+  mongodb-data:
+    driver: local
