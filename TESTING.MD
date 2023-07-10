@@ -34,7 +34,7 @@ Step 2: Build the Dockerfile and create an image for our app.
 
 Step 3: Launch the app inside the container in the same 'mongo' network and test the application.
 
-    	In Dockerfile modify the last line as - CMD ["node", "app-image-server.js"]
+    In Dockerfile modify the last line as - CMD ["node", "app-image-server.js"]
 	docker build . -t myapp:1.0
 	docker images
 	docker run -d -p 27017:27017 --name mongodb -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret --network mongo-network mongo
@@ -42,3 +42,12 @@ Step 3: Launch the app inside the container in the same 'mongo' network and test
 	docker run -d -it --name myapp-container -p 3000:3000 --network mongo-network myapp:1.0
 	Stop all the containers
 	In Dockerfile modify the last line as - CMD ["node", "server.js"]
+	
+#### Test Case 4 -
+
+Step 1: Launch MongoDB, Mongo Express and application containers using docker-compose.
+
+Step 2: Test the application.
+
+    docker-compose -f mongo-deployment.yaml up -d
+	docker-compose -f mongo-deployment.yaml down
