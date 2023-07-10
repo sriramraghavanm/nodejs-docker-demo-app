@@ -1,3 +1,9 @@
+// Use this JS when we want to run the application in container environment i.e. from within the container
+// Changes specific to Docker made in this file
+// Command to build Dockerfile - docker build . -t myapp:1.0
+// Before running docker run command, start mongodb and mongo expess containers - without docker-compose
+// Command to run the container - docker run -d -it --name myapp --network mongo-network -p 3000:3000 myapp:1.0
+
 let express = require('express');
 let path = require('path');
 let fs = require('fs');
@@ -21,13 +27,13 @@ app.get('/profile-picture', function (req, res) {
 });
 
 // use when starting application locally
-let mongoUrlLocal = "mongodb://mongoadmin:secret@localhost:27017";
+let mongoUrlLocal = "mongodb://mongoadmin:secret@localhost";
 
 // use when starting application as docker container
 let mongoUrlDocker = "mongodb://mongoadmin:secret@mongodb";
 
 // pass these options to mongo client connect request to avoid DeprecationWarning for current Server Discovery and Monitoring engine
-let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 60000 };
 
 // "user-account" in demo with docker. "my-db" in demo with docker-compose
 let databaseName = "user-account";
