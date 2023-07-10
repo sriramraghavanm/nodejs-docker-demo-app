@@ -4,7 +4,7 @@
 
 Step 1: Pull MongoDB and Mongo Express images and spin a container from the image.
 
-Step 2: Run node server.js and test the application. (Application is not yet containerized)
+Step 2: Run node server.js and test the application. (Application is not yet containerized). If 'node server.js' gives error, run 'npm install' from within app folder.
 
     docker pull mongo:latest
 	docker pull mongo-express:latest
